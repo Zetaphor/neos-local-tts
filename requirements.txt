@@ -1,0 +1,3 @@
+gtts
+websockets
+PyQt5
