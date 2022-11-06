@@ -1,1 +1,4 @@
 build/
+dist/
+output.mp3
+__pycache__

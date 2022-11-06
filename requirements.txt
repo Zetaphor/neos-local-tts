@@ -1,3 +1,4 @@
 gtts
 websockets
-PyQt5
+PyInstaller
+pyttsx3

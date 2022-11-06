@@ -1,0 +1,1 @@
+python -m PyInstaller neos-tts-server.py
