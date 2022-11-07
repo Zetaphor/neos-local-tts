@@ -22,9 +22,9 @@ If you don't see the Mute Helper connected, try re-equipping an avatar that has 
 
 ### Configuring Audio Output
 
-The local software works by generating the audio and saving it to a local MP3 file, which is then played with a provided copy of VLC.
-I may switch this to a user-configured external player in the future, but for now it's easier to just bundle a portable copy of VLC.
-You will need to configure this copy of VLC to only output audio on the audio device you want to use as your Neos input.
+The audio output device can be configured by running the utility located in the `audio-output-selector` subfolder. This utility will list all available audio outputs that can be used as a TTS playback target.
+When you select an output, this updates the entry in `mpv/mpv.conf` to the correct device ID.
+
 It is advised to install an [application like VB-Cable](https://vb-audio.com/Cable/) which provides you an dummy output that audio can be routed into.
 Once installed you can set the output of VLC to the VB-Cable output, and specify that device as your microphone input in Neos.
 
