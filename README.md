@@ -63,3 +63,5 @@ A batch script is provided to run this command
 
 
 mpv.com --audio-device=help
+include reg zip
+option to not listen to local
