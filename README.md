@@ -63,5 +63,6 @@ A batch script is provided to run this command
 
 
 mpv.com --audio-device=help
-include reg zip
+document include reg zip
 option to not listen to local
+Need to actually add cancel check in audio selector
