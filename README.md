@@ -60,3 +60,6 @@ Build a new distributable with PyInstaller
 ```python -m PyInstaller neos-tts-server.py```
 
 A batch script is provided to run this command
+
+
+mpv.com --audio-device=help

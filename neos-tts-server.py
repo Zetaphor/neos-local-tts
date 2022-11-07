@@ -3,6 +3,7 @@ import asyncio
 from configparser import ConfigParser
 from gtts import gTTS
 from websockets import serve
+import simpleaudio as sa
 
 import pyttsx3
 microsoft_engine = pyttsx3.init('sapi5')
@@ -53,7 +54,7 @@ gtts_language = gtts_language_tlds[CONFIG_GTTS_LANG]
 async def gtts_message(message):
     tts = gTTS(message, lang=gtts_language[0], tld=gtts_language[1])
     tts.save('output.mp3')
-    subprocess.call('vlc\\vlc.exe output.mp3 --play-and-exit')
+    subprocess.call('mpv\\mpv.com output.mp3')
 
 
 async def microsoft_sapi_message(message):
@@ -61,15 +62,12 @@ async def microsoft_sapi_message(message):
     microsoft_engine.setProperty("rate", int(CONFIG_MICROSOFT_RATE))
     microsoft_engine.save_to_file(message, 'output.mp3')
     microsoft_engine.runAndWait()
-    subprocess.call('vlc\\vlc.exe output.mp3 --play-and-exit')
+    play_local_audio()
+    subprocess.call('mpv\\mpv.com output.mp3')
 
-
-# async def test():
-#     # await gtts_message('This is a test of the TTS system. I am going to say a number of words like Neos, builder, Zetaphor, and Sphyxia')
-#     await microsoft_sapi_message('This is a test of the TTS system. I am going to say a number of words like Neos, builder, Zetaphor, and Sphyxia')
-#     subprocess.call('vlc\\vlc.exe output.mp3 --play-and-exit')
-
-# asyncio.run(test())
+def play_local_audio():
+    wave_object = sa.WaveObject.from_wave_file('output.mp3')
+    wave_object.play()
 
 async def NeosWSS(websocket):
     async for message in websocket:
