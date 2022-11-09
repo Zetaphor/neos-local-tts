@@ -11,12 +11,13 @@ microsoft_engine = pyttsx3.init('sapi5')
 config_object = ConfigParser()
 config_object.read("config.ini")
 
-CONFIG_VOICE_ENGINE = config_object['VoiceEngine']['engineName']
+CONFIG_VOICE_ENGINE = config_object['VoiceEngine']['engineName'].lower()
+CONFIG_LOCAL_PLAYBACK = config_object['VoiceEngine']['localPlayback'].lower()
 CONFIG_SERVER_PORT = config_object['ServerPort']['port']
 
-CONFIG_GTTS_LANG = config_object['Google']['language']
+CONFIG_GTTS_LANG = config_object['Google']['language'].lower()
 
-CONFIG_MICROSOFT_VOICE = config_object['Microsoft']['voice']
+CONFIG_MICROSOFT_VOICE = config_object['Microsoft']['voice'].lower()
 CONFIG_MICROSOFT_RATE = config_object['Microsoft']['speechRate']
 
 microsoft_voice_keys = {
@@ -62,7 +63,8 @@ async def microsoft_sapi_message(message):
     microsoft_engine.setProperty("rate", int(CONFIG_MICROSOFT_RATE))
     microsoft_engine.save_to_file(message, 'output.mp3')
     microsoft_engine.runAndWait()
-    play_local_audio()
+    if (CONFIG_LOCAL_PLAYBACK == "true"):
+        play_local_audio()
     subprocess.call('mpv\\mpv.com output.mp3')
 
 def play_local_audio():
@@ -71,9 +73,9 @@ def play_local_audio():
 
 async def NeosWSS(websocket):
     async for message in websocket:
-        if (CONFIG_VOICE_ENGINE == 'Google'):
+        if (CONFIG_VOICE_ENGINE == 'google'):
             await gtts_message(message)
-        elif (CONFIG_VOICE_ENGINE == 'Microsoft'):
+        elif (CONFIG_VOICE_ENGINE == 'microsoft'):
             await microsoft_sapi_message(message)
         await websocket.send(message)
 
