@@ -3,7 +3,7 @@ import asyncio
 from configparser import ConfigParser
 from gtts import gTTS
 from websockets import serve
-import simpleaudio as sa
+from playsound import playsound
 
 import pyttsx3
 microsoft_engine = pyttsx3.init('sapi5')
@@ -56,22 +56,21 @@ async def gtts_message(message):
     tts = gTTS(message, lang=gtts_language[0], tld=gtts_language[1])
     tts.save('output.mp3')
     if (CONFIG_LOCAL_PLAYBACK == "true"):
-        play_local_audio()
+        playsound('output.mp3')
     subprocess.call('mpv\\mpv.com output.mp3')
 
 
 async def microsoft_sapi_message(message):
     microsoft_engine.setProperty('voice', microsoft_voice)
     microsoft_engine.setProperty("rate", int(CONFIG_MICROSOFT_RATE))
-    microsoft_engine.save_to_file(message, 'output.mp3')
+    microsoft_engine.save_to_file(message, 'output.wav')
     microsoft_engine.runAndWait()
     if (CONFIG_LOCAL_PLAYBACK == "true"):
-        play_local_audio()
-    subprocess.call('mpv\\mpv.com output.mp3')
+        playsound('output.wav')
+    subprocess.call('mpv\\mpv.com output.wav')
 
 def play_local_audio():
-    wave_object = sa.WaveObject.from_wave_file('output.mp3')
-    wave_object.play()
+    playsound('output.mp3')
 
 async def NeosWSS(websocket):
     async for message in websocket:

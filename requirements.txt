@@ -2,4 +2,4 @@ gtts
 websockets
 PyInstaller
 pyttsx3
-simpleaudio
+playsound
