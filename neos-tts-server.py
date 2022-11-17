@@ -55,6 +55,8 @@ gtts_language = gtts_language_tlds[CONFIG_GTTS_LANG]
 async def gtts_message(message):
     tts = gTTS(message, lang=gtts_language[0], tld=gtts_language[1])
     tts.save('output.mp3')
+    if (CONFIG_LOCAL_PLAYBACK == "true"):
+        play_local_audio()
     subprocess.call('mpv\\mpv.com output.mp3')
 
 
