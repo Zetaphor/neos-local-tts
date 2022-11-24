@@ -16,6 +16,10 @@ You can get a copy of this modified Mute Helper by pasting the following link in
 
 neosdb:///b49a42c5d2ce8d4bb516bf4fe27e3e28681bc61f5ad278926c3bcd03e2989a87.7zbson
 
+### Hosted Version
+
+Since there are still some outstanding issues with this version, [a hosted version has been made available as well.](https://github.com/Zetaphor/neos-hosted-tts)
+
 ## Usage
 
 ### Configuring Audio Output
