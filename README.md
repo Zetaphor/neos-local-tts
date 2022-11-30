@@ -2,6 +2,8 @@
 
 **The developer of this software and the software itself is in no way officially affiliated with or endorsed by Neos, Solirax, or any representative of the Neos staff.**
 
+Want to support this project? [Go donate to Frooxius' Patreon!](https://www.patreon.com/frooxius)
+
 This is a hobby project built by an enthusiast as a community contribution. If you encounter issues please create open an issue on this repo and/or contact Zetaphor in Neos, Zetaphor#0237 on Discord, or Zetaphor on Guilded.
 
 ## About
